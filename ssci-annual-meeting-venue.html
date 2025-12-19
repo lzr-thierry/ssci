@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <base href=".">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/png" href="assets/favicon.png"/>
+    <link rel="stylesheet" type="text/css" media="all" href="assets/main.css"/>
+    <meta name="description" content="Venue and transportation guide for the First SSCI Annual Combustion Meeting">
+    <meta name="KeyWords" content="SSCI, Annual Meeting, Venue, Location, NUS, Transportation">
+    <title>Venue Guide | First SSCI Annual Combustion Meeting</title>
+
+    <style>
+        .venue-section {
+            margin-bottom: 2em;
+        }
+        .venue-section h3 {
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 0.3em;
+            margin-bottom: 1em;
+        }
+        .map-container {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            padding-top: 56.25%; /* 16:9 Aspect Ratio for responsive iframe */
+            margin-bottom: 1.5em;
+        }
+        .map-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+        .address-box {
+            background-color: #f9f9f9;
+            border-left: 5px solid var(--secondary-color);
+            padding: 15px 20px;
+            margin-bottom: 1.5em;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="banner-container">
+        <img src="assets/SSCI-logo.png" alt="SSCI Logo" class="banner-logo left">
+        <img src="assets/singapore_p3.jpg" alt="Singapore Skyline Banner" class="banner">
+        <div class="overlay-text">Singapore Section of the Combustion Institute</div>
+        <img src="assets/CI-logo.png" alt="Combustion Institute Logo" class="banner-logo right">
+    </header>
+
+    <nav class="navigation">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a class="current" href="events.html">Events</a></li>
+            <li><a href="membership.html">Membership</a></li>
+            <li><a href="contacts.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <main class="content-wrapper">
+        <h2>Meeting Venue & Transportation Guide</h2>
+
+        <div class="address-box">
+            <h4>First SSCI Annual Combustion Meeting</h4>
+            <p>
+                <strong>Date:</strong> 9 December 2025<br>
+                <strong>Venue:</strong> LT6, Faculty of Engineering<br>
+                <strong>Address:</strong> Block E4, Level 4, 4 Engineering Drive 3, Singapore 117583
+            </p>
+        </div>
+
+        <section class="venue-section">
+            <h3>Interactive Map</h3>
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.786520591023!2d103.7719013153492!3d1.300588999049772!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31da1af0e0110051%3A0x2933f77876251f1a!2sNUS%20Faculty%20of%20Engineering!5e0!3m2!1sen!2ssg!4v1678886422501!5m2!1sen!2ssg" width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </section>
+
+        <section class="venue-section">
+            <h3>By Public Transportation</h3>
+
+            <h4>Via MRT & Bus</h4>
+            <p>The two most convenient MRT stations are <strong>Kent Ridge</strong> and <strong>Clementi</strong>.</p>
+            <ul>
+                <li>
+                    <strong>From Kent Ridge MRT Station (CC24):</strong><br>
+                    Exit the station and board public bus service <strong>95</strong>. Alight at the "Information Technology" bus stop (16189), which is a short walk from the Faculty of Engineering.
+                </li>
+                <li>
+                    <strong>From Clementi MRT Station (EW23):</strong><br>
+                    Go to the Clementi Bus Interchange and board bus service <strong>96</strong>. Alight at the "NUS Fac of Engrg" bus stop (16159) along Clementi Road.
+                </li>
+            </ul>
+            <p>
+                Other public bus services that stop near the Faculty of Engineering are 33, 183, and 188.
+            </p>
+        </section>
+
+        <section class="venue-section">
+            <h3>By Car or Taxi</h3>
+            <h4>Driving Directions</h4>
+            <p>
+                If you are driving, you can reach the NUS campus via the Ayer Rajah Expressway (AYE). Take Exit 9 to Clementi Road and follow the signs to the university.
+            </p>
+
+            <h4>Taxi / Private Hire Drop-off</h4>
+            <p>
+                For a convenient drop-off, direct your driver to <strong>"NUS Engineering Block E4"</strong> or <strong>"NUS Engineering Block E5"</strong>. LT6 is located in Block E4.
+            </p>
+        </section>
+
+        <section class="venue-section">
+            <h3>Visitor Parking</h3>
+            <p>
+                Visitor parking is available at designated car parks within the NUS campus. Please park only in the <strong>white lots</strong>, as red lots are reserved for staff season pass holders.
+            </p>
+            <ul>
+                <li><strong>Recommended Car Park:</strong> Car Park 2 (P2) is recommended for visitors to the Faculty of Engineering.</li>
+                <li><strong>Payment:</strong> Parking fees are automatically charged via your in-vehicle unit (IU) based on per-minute rates.</li>
+            </ul>
+            <p>For more detailed information on parking, you can refer to the official <a href="https://uci.nus.edu.sg/oca/transport-logistics-carpark/parking-information-for-visitors/" target="_blank">NUS Visitor Parking Information page</a>.</p>
+        </section>
+
+    </main>
+
+    <footer>
+        &copy; Singapore Section of the Combustion Institute
+    </footer>
+
+</body>
+</html>

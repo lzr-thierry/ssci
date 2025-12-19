@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <base href=".">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/png" href="assets/favicon.png"/>
+    <link rel="stylesheet" type="text/css" media="all" href="assets/main.css"/>
+    <meta name="description" content="Call for Abstracts for the First SSCI Annual Combustion Meeting">
+    <meta name="KeyWords" content="SSCI, Annual Meeting, Call for Abstracts, Combustion, Singapore">
+    <title>Call for Abstracts | First SSCI Annual Combustion Meeting</title>
+
+    <style>
+        :root {
+            --primarycolor: #005b96; /* Deep navy */
+            --highlightcolor: var(--primary-color);
+        }
+
+        /* --- ORIGINAL STYLES --- */
+
+        .meeting-title-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .meeting-title-container h1 {
+            color: var(--primarycolor);
+            font-size: 3.5rem;
+            font-weight: bold;
+            margin: 0.3em 0 0.3em 0;
+        }
+
+        .meeting-title-container h2 {
+            color: var(--primarycolor);
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin: 0;
+        }
+
+        .meeting-content {
+            max-width: 960px;
+            margin: 20px auto;
+            padding: 0 20px;
+            text-align: left;
+        }
+
+        .meeting-content p {
+            margin-bottom: 1em;
+            line-height: 1.6;
+        }
+
+        .meeting-content h3 {
+            color: var(--primarycolor);
+            font-size: 1.8em;
+            font-weight: bold;
+        }
+
+        .meeting-content ul {
+            list-style-type: disc;
+            margin-left: 20px;
+            margin-bottom: 1em;
+        }
+
+        .meeting-content li {
+            margin-bottom: 0.5em;
+        }
+
+        .meeting-content .large-bold {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: var(--highlightcolor);
+        }
+
+        .venue-link {
+            background-color: #eef7ff;
+            padding: 4px 10px;
+            border-radius: 6px;
+            border: 1px solid #cce5ff;
+            text-decoration: none !important;
+            font-weight: bold;
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+
+        .venue-link:hover {
+            background-color: #dbefff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            color: var(--link-hover-color);
+        }
+
+        .venue-link::before {
+            content: '📍';
+            margin-right: 7px;
+            font-size: 1.1em;
+        }
+
+        /* Styles for Invited Speaker Gallery */
+        .speaker-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        /* MODIFIED SPEAKER CARD FOR INTERACTION */
+        .speaker-card {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            width: calc(33.333% - 20px);
+            text-align: center;
+            padding: 15px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer; /* Indicates clickable */
+            position: relative;
+        }
+
+        .speaker-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+        }
+
+        /* "Click to View" Badge on Hover */
+        .speaker-card::after {
+            content: 'View Abstract & Biography';
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%) translateY(10px);
+            background-color: var(--primarycolor);
+            color: white;
+            padding: 10px 16px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            opacity: 0;
+            transition: all 0.3s ease;
+            pointer-events: none;
+            font-weight: bold;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .speaker-card:hover::after {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .speaker-card img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 15px;
+            border: 3px solid #eef7ff;
+        }
+
+        .speaker-card h4 {
+            margin: 0 0 5px 0;
+            font-size: 1.1em;
+            color: var(--primarycolor);
+        }
+
+        .speaker-card .affiliation {
+            font-size: 0.9em;
+            font-style: italic;
+            color: #555;
+            margin: 0 0 10px 0;
+            flex-grow: 1;
+        }
+
+        .speaker-card .talk-title {
+            font-size: 0.95em;
+            color: #813c54;
+            margin: 0;
+            font-weight: bold;
+            line-height: 1.3;
+            margin-bottom: 10px; /* Space for the badge */
+        }
+
+        /* Helper to hide raw data inside card */
+        .speaker-hidden-details {
+            display: none;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .speaker-card {
+                width: calc(50% - 20px);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .speaker-card {
+                width: 100%;
+            }
+        }
+
+        /* Registration Section */
+        .registration-section {
+            background: linear-gradient(135deg, #f5f7fa 0%, #eef7ff 100%);
+            border-radius: 12px;
+            padding: 30px 20px;
+            margin-top: 40px;
+            text-align: center;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            border: 1px solid #cce5ff;
+        }
+
+        .registration-section h3 {
+            font-size: 2.2em;
+            margin-bottom: 15px;
+            color: var(--primarycolor);
+        }
+
+        .registration-section .pricing-info {
+            font-size: 1.2em;
+            color: #333;
+            margin-bottom: 30px;
+            line-height: 1.7;
+        }
+
+        .registration-section .pricing-info strong {
+            color: var(--primarycolor);
+            font-weight: 600;
+        }
+
+        .single-register-button {
+            background-color: #e57373;
+            color: white;
+            padding: 16px 35px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.3em;
+            font-weight: bold;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+            display: inline-block;
+            box-shadow: 0 4px 12px rgba(229, 115, 115, 0.4);
+        }
+
+        .single-register-button:hover {
+            background-color: #d32f2f;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(211, 47, 47, 0.5);
+        }
+
+        /* --- MODAL STYLES --- */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.7);
+            backdrop-filter: blur(4px);
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .modal-content {
+            background-color: #fff;
+            margin: auto;
+            padding: 40px;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 800px;
+            max-height: 85vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+            animation: modalFadeIn 0.3s ease-out;
+            border-top: 6px solid var(--primarycolor);
+        }
+
+        @keyframes modalFadeIn {
+            from {opacity: 0; transform: scale(0.95);}
+            to {opacity: 1; transform: scale(1);}
+        }
+
+        .close-modal-btn {
+            color: #aaa;
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            font-size: 32px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.2s;
+            line-height: 1;
+        }
+
+        .close-modal-btn:hover {
+            color: #d32f2f;
+        }
+
+        .modal-header {
+            border-bottom: 1px solid #eee;
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+        }
+
+        .modal-header h2 {
+            color: var(--primarycolor);
+            margin: 0 0 5px 0;
+            font-size: 2rem;
+        }
+
+        .modal-header .modal-affiliation {
+            font-style: italic;
+            color: #555;
+            font-size: 0.9em;
+        }
+
+        .modal-body h4 {
+            color: #813c54;
+            margin-top: 25px;
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+            border-left: 5px solid #813c54;
+            padding-left: 12px;
+        }
+
+        .modal-body p {
+            line-height: 1.7;
+            margin-bottom: 15px;
+            text-align: justify;
+            font-size: 0.8em;
+            color: #333;
+        }
+
+        .modal-title-text {
+            font-weight: bold;
+            font-size: 0.9em;
+            color: #000;
+            background: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+            display: inline-block;
+        }
+
+        /* --- NEW PROGRAMME DOWNLOAD BUTTON --- */
+        .programme-download-btn {
+            background-color: var(--primarycolor); /* Matches your deep navy */
+            color: #ffffff;
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-radius: 50px;
+            text-decoration: none !important;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px; /* Space between icon and text */
+            box-shadow: 0 4px 15px rgba(0, 91, 150, 0.3);
+            transition: all 0.3s ease;
+            border: 2px solid var(--primarycolor);
+            margin-bottom: 30px;
+        }
+
+        .programme-download-btn:hover {
+            background-color: #ffffff;
+            color: var(--primarycolor);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 91, 150, 0.4);
+        }
+
+        /* Icon Animation on hover */
+        .programme-download-btn:hover span {
+            animation: bounce 1s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+            40% {transform: translateY(-5px);}
+            60% {transform: translateY(-3px);}
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <header class="banner-container">
+        <img src="assets/SSCI-logo.png" alt="SSCI Logo" class="banner-logo left">
+        <img src="assets/singapore_p3.jpg" alt="Singapore Skyline Banner" class="banner">
+        <div class="overlay-text">Singapore Section of the Combustion Institute</div>
+        <img src="assets/CI-logo.png" alt="Combustion Institute Logo" class="banner-logo right">
+    </header>
+
+    <nav class="navigation">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a class="current" href="events.html">Events</a></li>
+            <li><a href="membership.html">Membership</a></li>
+            <li><a href="contacts.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <main class="meeting-content">
+
+        <div class="meeting-title-container">
+            <h1>Call for Abstracts</h1>
+            <h2>First SSCI Annual Combustion Meeting</h2>
+        </div>
+
+        <p>
+            The Singapore Section of the Combustion Institute (SSCI) is delighted to announce the <strong>1st SSCI Annual Combustion Meeting</strong>, to be held on <strong>9 December 2025</strong> at
+            <a href="ssci-annual-meeting-venue.html" class="venue-link" title="Click for location and transport guide" target="_blank">LT6, National University of Singapore</a>.
+        </p>
+
+        <p>
+            This inaugural meeting aims to bring together professionals, researchers, and students from academia, industry, and government across Singapore. It will serve as a platform to share the latest research, foster collaboration, and discuss the future of combustion science and its role in addressing local and global energy and environmental challenges. The theme of the meeting is <strong>"Power a Net-Zero and Sustainable Future"</strong>. The program will feature technical sessions for oral presentations and a poster session to highlight major research achievements and emerging trends within our community.
+        </p>
+
+        <section>
+            <h3>Topics of Interest</h3>
+            <p>We invite the submission of abstracts for consideration for oral or poster presentations in all areas of combustion science, including but not limited to:</p>
+            <ul>
+                <li>Reaction Kinetics and Chemical Pathways</li>
+                <li>Laminar and Turbulent Flames</li>
+                <li>Computational Fluid Dynamics (CFD) for Combustion</li>
+                <li>Advanced Combustion Diagnostics</li>
+                <li>Sustainable and Future Fuels (e.g., Hydrogen, Ammonia, Biofuels)</li>
+                <li>Fire Research, Safety, and Mitigation Strategies</li>
+                <li>Gas Turbine, Engine, and Industrial Combustion</li>
+                <li>Soot, Nanomaterials, and Pollutant Formation</li>
+                <li>Detonations, Explosions, and Supercritical Combustion</li>
+                <li>Applications of AI and Machine Learning in Combustion</li>
+            </ul>
+        </section>
+
+
+        <section>
+            <h3>Programme</h3>
+
+            <!-- NEW DOWNLOAD BUTTON -->
+            <div style="text-align: center;">
+                <a href="documents/1st SSCI Annual Combustion Meeting Programme.pdf" target="_blank" class="programme-download-btn">Download Full Programme (PDF)</a>
+            </div>
+
+            <p class="center-text">
+            <img src="documents/SSCI_AnnualMtg - 20251118 - 1.png" style="width: 900px; max-width:100%;"/>
+            </p>
+            <p class="center-text">
+            <img src="documents/SSCI_AnnualMtg - 20251118 - 2.png" style="width: 900px; max-width:100%;"/>
+            </p>
+        </section>
+
+        <section>
+            <h3>Posters</h3>
+            <p class="center-text">
+            <img src="documents/SSCI_posters - 1.png" style="width: 900px; max-width:100%;"/>
+            </p>
+            <p class="center-text">
+            <img src="documents/SSCI_posters - 2.png" style="width: 900px; max-width:100%;"/>
+            </p>
+        </section>
+
+        <section>
+            <h3>Presentation Instructions</h3>
+
+            <p><strong>Oral Presentations</strong></p>
+            <ul>
+                <li>We recommend using a <strong>16:9</strong> aspect ratio for your presentation slides (<strong>PPT or PDF</strong>).</li>
+            </ul>
+
+            <p><strong>Poster Presentations</strong></p>
+            <ul>
+                <li>The required poster size is <strong>A0</strong>.</li>
+                <li>The organizers will handle poster printing. Please send the <strong>PDF version</strong> of your poster to <a href="mailto:ssci.combustion@gmail.com">ssci.combustion@gmail.com</a>.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h3>Invited Speakers</h3>
+
+            <div class="speaker-gallery">
+
+                <!-- SPEAKER 1: Prof. Kaoru Maruta -->
+                <div class="speaker-card">
+                    <img src="documents/speakers-photo/Prof. Kaoru Maruta.png" alt="Photo of Prof. Kaoru Maruta">
+                    <h4>Prof. Kaoru Maruta</h4>
+                    <p class="affiliation">Tohoku University</p>
+                    <p class="talk-title">Combustion fundamentals for engine knock: Principles, predictions, and future fuel design</p>
+                    <!-- HIDDEN DETAILS -->
+                    <div class="speaker-hidden-details">
+                        <div class="hidden-abstract">
+                            <p>This work originates from a Japanese Strategic Innovation Promotion (SIP) program and aims to establish a principles‑based framework for engine knock prediction grounded in combustion fundamentals. Using two‑dimensional DNS, a constant‑volume knocking experiment was quantitatively reproduced, marking a key breakthrough. Detailed analysis of the DNS results, combined with theory and targeted experiments, has led to a framework that can predict knock behavior from first principles rather than empirical calibration. Application to PRF mixtures in a CFR engine has already demonstrated encouraging success, and ongoing efforts seek to extend the approach to ammonia‑containing and other future e‑fuel blends. The lecture will summarize the evolution from DNS to reduced predictive metrics, and discuss how such physics‑based indicators can guide the design and optimization of future fuels for high‑efficiency engines.</p>
+                        </div>
+                        <div class="hidden-bio">
+                            <p>Kaoru Maruta is a Professor and Director of the Institute of Fluid Science at Tohoku University, and a Fellow and member of the Board of Directors of The Combustion Institute. His research has covered microgravity combustion limits, high‑temperature oxy‑fuel combustion, flame chemistry in micro‑flow reactors, and reaction characteristics of next‑generation refrigerants. His recent work focuses on fuel effects on lean ignition limits and knock mechanisms in super‑lean‑burn engines toward the optimal design of future synthetic and low‑carbon fuels. He is also one of the lead principal investigators of the HYCOMBS program in Singapore.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="speaker-card">
+                    <img src="documents/speakers-photo/Prof. Christine Rousselle.png" alt="Photo of Prof. Christine Rousselle">
+                    <h4>Prof. Christine Rousselle</h4>
+                    <p class="affiliation">Université d’Orléans</p>
+                    <p class="talk-title">Liquid ammonia spray: Specificities and challenges</p>
+                    <!-- HIDDEN DETAILS -->
+                    <div class="speaker-hidden-details">
+                        <div class="hidden-abstract">
+                            <p>Since the 2020s, ammonia has attracted renewed attention as a zero-carbon fuel for internal combustion engines, especially for marine and off-road applications. Its distinct thermophysical properties make liquid-phase, high-pressure injection a promising pathway for efficient and cleaner combustion. Under engine-relevant conditions, ammonia sprays often experience flash boiling, which enhances evaporation and atomization but also alters spray penetration and structure. Because ammonia’s calorific value is roughly half that of conventional fuels, larger nozzle diameters and multi-hole injectors are typically required. In multi-hole configurations, plume interactions play a critical role, making it essential to study flash boiling and spray collapse as separate but related phenomena. This work reviews the latest findings on liquid ammonia injection and flash-boiling atomization, emphasizing the need for advanced optical diagnostics at both macroscopic and microscopic scales to support accurate spray modelling and engine design.</p>
+                        </div>
+                        <div class="hidden-bio">
+                            <p></p>
+                            <p>Christine Rousselle is a Professor at the University of Orléans (PRISME Laboratory), where she has worked since 2006, following a PhD in Energy and Mechanical Engineering (1993). She is a member of the Scientific Council of IFP Energies Nouvelles (IFPen) and serves on several international advisory boards, including the MariNH3 Advisory Board (UK) and the CMT–UPV Advisory Board (Spain). In 2024, she was appointed Senior Member of the Institut Universitaire de France for a five-year term to advance research on ammonia combustion.</p>
+                            <p>She chaired and organised in Orléans, the 2nd Symposium on Ammonia Energy in 2023, contributes to the organization of major events (Ammonia Combustion Meetings, THIESEL and SAE Naples Capri conferences ..) and serves as the French ambassador for ASME-Internal Combustion Engines Forward. Fellow of the Combustion Institute (2021), she has been a member of the Combustion Institute Board since 2024 and is one co-editor of the Proceedings of the Combustion Institute and the Journal of Ammonia Energy. </p>
+                            <p>Her research focuses on fundamental and applied combustion, innovative combustion modes, and low- and zero-carbon fuels—including ammonia and alcohols—with strong activity in optical diagnostics and engine applications. She leads more than 10 projects on ammonia-fuelled systems, from fundamental combustion to engine-oriented combustion improvements and recently decarbonization of industrial furnaces. She is also involved in HYcombs (HYCOMBS: Hydrogen and Ammonia Combustion in Singapore) project.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="speaker-card">
+                    <img src="documents/speakers-photo/Prof. Jennifer Wen.png" alt="Photo of Prof. Jennifer Wen">
+                    <h4>Prof. Jennifer Wen</h4>
+                    <p class="affiliation">University of Surrey</p>
+                    <p class="talk-title">Research on the safety of high-pressure gaseous and low-temperature liquid hydrogen</p>
+                    <!-- HIDDEN DETAILS -->
+                    <div class="speaker-hidden-details">
+                        <div class="hidden-abstract">
+                            <p>Hydrogen is a clean and sustainable energy carrier that is called to play an essential role in future energy systems. Although hydrogen has been used as an industrial gas for decades, its use as an energy carrier would bring it to the proximity of untrained public. This brings additional safety concerns because there are some key differences in the properties of hydrogen and conventional hydrocarbon fuels. To bring all the benefits of hydrogen to our society, hydrogen and its technologies must be safely developed, introduced, and used across a variety of applications and sectors. The presentation will highlight some of the safety issues related to high-pressure gaseous and low-temperature liquid hydrogen. This will be followed by the numerical studies of my team on hydrogen spontaneous ignition, jet fires, explosions and deflagration to detonation transition. The experimental data, either from the literature or collaborators, which were used for model validation in our research, will also be briefly described. Finally, results will be presented from our recent numerical predictions for the internal pressure evolution of a liquid hydrogen tank under fire attack, which was carried out in the frame of a joint industry project on the safety of liquid hydrogen, for which I am the coordinator and scientist in charge. </p>
+                        </div>
+                        <div class="hidden-bio">
+                            <p>Jennifer Wen holds a personal chair in Energy and Environment at University of Surrey in the UK, where she leads the Fire and Explosion Modelling Group. Jennifer is a Fellow of the Royal Academy of Engineering. She holds several responsible positions in the international scientific community including Chair of the Explosion Liaison Group, Vice-Chair of the International Association for Fire Safety Science, Associate Editor for the Proceedings of the Combustion Institute and founding editor for Hydrogen Safety, which was launched by the International Association for Hydrogen Safety (HySAFE). She also sits on the Board of Directors for HySAFE. </p>
+                            <p>Jennifer’s research is focused on numerical studies of reactive and non-reactive flows related to critical safety issues in the emerging energy technologies, including but not limited to: (1) Hydrogen safety: accidental releases, spontaneous ignition, fire and explosions and the effect of fire attacks on hydrogen storage tanks. (2) Batteries: thermal runaway of lithium-ion batteries due to thermal, mechanical or electrical abuse and its propagation in modules/packs; mitigation measures to enhance safety. (3) Carbon capture and storage (CCS): safety related to pipeline transmission of the captured CO2, covering CO2 decompression in the event of pipeline rupture and its atmospheric dispersion. (4) Fire modelling: a wide range of fire scenarios. (5) Explosion: flame acceleration and deflagration to detonation transition.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="speaker-card">
+                    <img src="documents/speakers-photo/Prof. Tat Loon Chng.png" alt="Photo of Prof. Tat Loon Chng">
+                    <h4>Prof. Tat Loon Chng</h4>
+                    <p class="affiliation">Department of Mechanical Engineering, College of Design and Engineering, NUS</p>
+                    <p class="talk-title">Diagnostics and prospects for plasma-assisted combustion</p>
+                    <!-- HIDDEN DETAILS -->
+                    <div class="speaker-hidden-details">
+                        <div class="hidden-abstract">
+                            <p>Ever since its introduction in the 1990s, plasma-assisted combustion has been growing in popularity and influence throughout the research community. Generally favoured for its ability to couple energy into a system over ultrashort (~ nanoseconds) timescales, lack of moving parts, and low energy cost for reactive species production, wide-ranging benefits such as reduction in ignition delay times, flame speed increase, and extension of lean limits are just a few examples of the many reported using this approach. These positive effects are typically achieved by creating a state of non-equilibrium in a combustion system, and taking advantage of this non-equilibrium state between the plasma and combustion chemistry to realize favourable conditions. Understanding, and optimizing this non-equilibrium (for a particular combustion application), which occurs over largely disparate timescales, has necessitated the development of non-intrusive, ultrafast diagnostics for tracking the large spatiotemporal gradients in system properties. This talk will present a few of such laser-based methods such as electric field induced second harmonic generation for electric field measurements, laser induced fluorescence for probing species concentrations and Rayleigh scattering thermometry for measuring temperature. The advent of ultrafast laser systems has been central to this diagnostic development, and the role these light sources play will be discussed and emphasized.</p>
+                        </div>
+                        <div class="hidden-bio">
+                            <p>Dr Chng Tat Loon is an assistant professor in the Mechanical Engineering department of CDE.  Prior to joining NUS, he was a postdoctoral associate at the Laboratory of Plasma Physics in Ecole Polytechnique, France. He received both his B.Eng and M.Eng degrees from the Department of Mechanical Engineering at the National University of Singapore (NUS), before obtaining his Ph.D from the Department of Mechanical and Aerospace Engineering at Princeton University, USA. Before pursuing his Ph.D, Dr. Chng worked for several years as an associate research scientist at Temasek Laboratories, NUS, on a range of fluid mechanics problems, with the goal of transitioning these technologies to the defense industry. His research interests include non-equilibrium plasma and nuclear technologies, development of advanced laser-based diagnostics for non-intrusive, standoff detection, and flow control aerodynamics, with specific application areas in aerospace and sustainable energy.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="speaker-card">
+                    <img src="documents/speakers-photo/Prof. He Qian.png" alt="Photo of Prof. He Qian">
+                    <h4>Prof. He Qian</h4>
+                    <p class="affiliation">Department of Materials Science and Engineering, College of Design and Engineering, NUS</p>
+                    <p class="talk-title">High-temperature catalytic ammonia combustion via single atom catalysts</p>
+                    <!-- HIDDEN DETAILS -->
+                    <div class="speaker-hidden-details">
+                        <div class="hidden-abstract">
+                            <p>Ammonia (NH₃) is increasingly recognized as a carbon-free energy carrier with high volumetric energy density, established global infrastructure, and the potential to decarbonize sectors where electrification remains challenging. However, using NH₃ directly as a fuel is hindered by poor combustibility, high ignition temperatures, and the risk of significant NOₓ formation. High-temperature catalytic ammonia combustion (HT-CAC) has recently emerged as a promising pathway to address these limitations by coupling surface-mediated NH₃ activation with catalysts engineered to withstand extreme thermal environments.</p>
+                            <p>In this talk, I will introduce our recent advances in HT-CAC and its implications for NH₃-based renewable combustion. First, we showed that Pt single-atom catalysts on refractory oxides can ignite NH₃ slightly above 200 °C and maintain stable combustion up to 1,100 °C while limiting NOₓ emissions to ~50 ppm with no detectable NH₃ slip. This work established single-atom catalysts as an effective design principle for achieving both low ignition and long-term durability.</p>
+                            <p>Building on this concept, we developed a high-entropy fluorite oxide aerogel (HEFOA) that stabilizes Pt through one-pot synthesis, preserving high surface area and structural integrity under 1,200 °C operation. The Pt@HEFOA catalyst delivers sustained activity and excellent N₂ selectivity over extended operation, enabled by lattice disorder and sluggish diffusion that suppress sintering.</p>
+                            <p>Together, these studies demonstrate HT-CAC as a viable next-generation NH₃ utilization strategy capable of providing high-grade, low-NOₓ heat for hard-to-abate industries and supporting a future NH₃-based energy economy.</p>
+                        </div>
+                        <div class="hidden-bio">
+                            <p>Qian completed his BSc and MSc degrees at Tsinghua University (2002–2008) before earning his PhD under Prof. Chris Kiely at Lehigh University in 2013, followed by postdoctoral research at Oak Ridge National Laboratory (2013–2016). He subsequently served as a University Research Fellow (Lecturer) at Cardiff University, UK, before joining the Department of Materials Science and Engineering at the National University of Singapore in 2019. Qian has published more than 200 papers with over 16,000 citations, including work in Science, Nature, and Nature Catalysis. His contributions have been recognized with major honors such as the NRF Fellowship (Class of 2019), the 2025 APACS Catalysis Development Excellence Award, and inclusion among the Highly Cited Researchers 2025 by Clarivate.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="speaker-card">
+                    <img src="documents/speakers-photo/Prof. Wenming Yang.png" alt="Photo of Prof. Wenming Yang">
+                    <h4>Prof. Wenming Yang</h4>
+                    <p class="affiliation">Department of Mechanical Engineering, College of Design and Engineering, NUS</p>
+                    <p class="talk-title">Development of the next generation ammonia marine engine with high efficiency and extremely low emission</p>
+                    <!-- HIDDEN DETAILS -->
+                    <div class="speaker-hidden-details">
+                        <div class="hidden-abstract">
+                            <p>The International Maritime Organization (IMO) proposed the historic 2050 net-zero greenhouse gas (GHG) target, and the use of carbon-free ammonia is widely acknowledged as one of the most promising pathways to achieve this goal. However, ammonia engines still suffer from low efficiency and high nitrogenous emissions due to ammonia’s inherently poor combustion characteristics. For large low-speed ammonia engines, which typically exhibit high NOx emissions and engine-out NOx levels exceeding unburned NH3, we propose an active in-cylinder DeNOx strategy under high-pressure direct-injection (HPDI) operation. By utilizing liquid ammonia post-injection, the strategy facilitates in-cylinder NOx reduction through selective non-catalytic reduction (SNCR) reactions, thereby mitigating the need for catalysts and aftertreatment systems. The proposed strategy achieves over 40% NOx reduction, meets IMO Tier Ⅲ limits while maintaining high ITE and keeping N2O and unburned NH3 at ultralow levels. For medium- and high-speed ammonia engines, a concept termed as in-cylinder reforming gas recirculation is proposed to simultaneously improve the thermal efficiency and reduce the unburned NH3, NOx, N2O and GHG emissions. For this concept, one cylinder of the multi-cylinder engine operates rich of stoichiometric and the excess ammonia in the cylinder is partially decomposed into hydrogen, then the exhaust of this dedicated reforming cylinder is recirculated into the other cylinders and therefore the advantages of hydrogen-enriched combustion and exhaust gas recirculation can be combined. The results show that the strategy can increase the indicated thermal efficiency by 15.8% and reduce unburned NH3 by 89.3%, N2O by 91.2% compared to the base/traditional ammonia engine without the proposed method. At the same time, it is able to reduce carbon footprint by 97.0% and greenhouse gases by 94.0% compared to the traditional pure diesel mode. The findings offer valuable guidance for the development of ammonia-fueled marine engines and support the sustainable transition to zero-carbon maritime transportation.</p>
+                        </div>
+                        <div class="hidden-bio">
+                            <p>Dr Yang Wenming is now an associate professor in the Department of Mechanical Engineering at National University of Singapore. He is also the editor-in-chief of Energy Engineering and Associate Editor for the ASME Journal of Engineering for Gas Turbine and Power, Alexandria Engineering Journal etc.  His research interests include the development of the next generation ammonia marine engine with high efficiency and near-zero GHG emissions, alternative fuels for power generation and transportation etc. So far, he has published more than 400 papers in peer-reviewed journals with a total citation over 21,000 times. He is the receiver of a few prestigious titles such as Dean’s Chair etc.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="speaker-card">
+                    <img src="documents/speakers-photo/Dr. Luwei Chen.png" alt="Photo of Dr. Luwei Chen">
+                    <h4>Dr. Luwei Chen</h4>
+                    <p class="affiliation">Institute of Sustainability for Chemicals, Energy and Environment, A*STAR</p>
+                    <p class="talk-title">From carbon to flight: Advances and challenges in sustainable aviation fuels</p>
+                    <!-- HIDDEN DETAILS -->
+                    <div class="speaker-hidden-details">
+                        <div class="hidden-abstract">
+                            <p>The aviation industry contributes approximately 2–3% of global CO₂ emissions and aims to achieve net-zero carbon emissions by 2050. However, the pathway to net zero is highly challenging. Emerging low-carbon energy carriers such as hydrogen, ammonia, and batteries are not yet feasible replacements for jet fuel, particularly for long-haul flights.</p>
+                            <p>Sustainable Aviation Fuel (SAF) is currently the most viable solution, with the potential to reduce aviation emissions by up to 65%. Unfortunately, current SAF supply remains far below expectations. Bio-based SAF accounts for only about 0.2% of global jet fuel consumption and is further constrained by the limited availability and sustainability of biomass feedstocks.</p>
+                            <p>To meet future demand, Power-to-Liquid (PtL) technologies will be essential. PtL provides a scalable, long-term pathway to produce low-carbon SAF and is expected to play a critical role in supporting the aviation industry's decarbonization efforts. At ISCE2, a multidisciplinary team of scientists and engineers, in collaboration with IHI, has developed a novel technology to produce SAF directly from CO₂. In this talk, our work on CO2 to SAF will be introduced. </p>
+                        </div>
+                        <div class="hidden-bio">
+                            <p>Dr. Chen Luwei is a Senior Principal Scientist at the Institute of Sustainability for Chemicals, Energy and Environment (ISCE2), A*STAR, where she leads the Carbon Conversion and Future Energy Carriers (CCFEC) division. She also holds a joint appointment as an Adjunct Associate Professor at the Department of Materials Science and Engineering, National University of Singapore (NUS).</p>
+                            <p>Dr. Chen earned her PhD from NUS and brings over 20 years of expertise in heterogeneous catalysis. Her research focuses on catalyst and materials development for renewable and alternative energy, biomass valorisation, and carbon dioxide capture and utilization.</p>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="speaker-card">
+                    <img src="documents/speakers-photo/Dr. Chang Wei Kang - 1.png" alt="Photo of Dr. Chang Wei Kang">
+                    <h4>Dr. Chang Wei Kang</h4>
+                    <p class="affiliation">Computational Sustainability, Institute of High Performance Computing, A*STAR</p>
+                    <p class="talk-title">Accelerating low-carbon transition through AI-driven catalyst and reactor modelling</p>
+                    <!-- HIDDEN DETAILS -->
+                    <div class="speaker-hidden-details">
+                        <div class="hidden-abstract">
+                            <p>Achieving net-zero emissions by 2050 calls for coordinated efforts across government, industry, and research communities. Singapore’s national strategy supports this transition through initiatives that enhance energy efficiency, advance low-carbon technologies, and strengthen international collaboration in clean energy, carbon markets, and technology innovation.</p>
+                            <p>Within this broader effort, the energy and chemicals sector remain pivotal, as decarbonisation depends on transitioning from conventional carbon-based fuels toward sustainable alternatives such as ammonia, methanol, and hydrogen. Advancing these pathways requires innovations that span the full value chain—from catalyst development and reactor optimisation to process integration and system deployment.</p>
+                            <p>In this study, we present two complementary technology platforms that leverage digital modelling and AI to accelerate the low-carbon transition: 1. CATPLAT – an AI-assisted catalyst design and screening platform that integrates materials informatics, physics-based modelling, and machine learning to identify and optimise high-performance catalysts. 2. REACT – a multi-scale reactor and combustion modelling platform that couples reaction kinetics, transport phenomena, and fluid dynamics to optimise reactor design and operating parameters. It also incorporates physics-based combustion and flame modelling module, enabling the investigation of flame characteristics and combustion behaviours of alternative fuels for power generation applications.</p>
+                            <p>Together, these platforms provide an end-to-end digital framework linking catalyst discovery to process and reactor optimisation. The combined use of CATPLAT and REACT enables faster evaluation of new catalytic systems, reaction mechanisms, and combustion processes - reducing development time and accelerating deployment of next-generation sustainable fuel technologies.</p>
+                            <p>A case study on hydrogen production from green ammonia illustrates how this integrated framework enhances the understanding of reaction–transport interactions, guides experimental design, and supports data-driven decision-making toward Singapore’s long-term net-zero ambitions.</p>
+                        </div>
+                        <div class="hidden-bio">
+                            <p>Dr Kang Chang Wei is the Director of the Computational Sustainability (CoS) Division at A*STAR’s Institute of High Performance Computing (IHPC). He also serves as Lead for the Environmental Transmission & Mitigation Co-Operative under PREPARE (Programme for Research in Epidemic Preparedness and Response). With over two decades of experience, Dr Kang has driven R&D and deployment in green shipping, sustainable infrastructure, and environmental modelling, including work on propeller optimisation, alternative fuels, and renewable energy. Several of his technologies have been licensed to industry, underscoring their practical impact. He has authored over 100 publications and received multiple awards, including the Public Administration Medal (Bronze, 2022) and MTI Firefly Awards for innovation and cross-agency collaboration.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="speaker-card">
+                    <img src="documents/speakers-photo/Dr. Ming Liu.png" alt="Photo of Dr. Ming Liu">
+                    <h4>Dr. Ming Liu</h4>
+                    <p class="affiliation">Maritime Energy and Sustainable Development (MESD), Centre of Excellence, NTU</p>
+                    <p class="talk-title">Understand the safety aspect of ammonia as an alternative marine fuel</p>
+                    <!-- HIDDEN DETAILS -->
+                    <div class="speaker-hidden-details">
+                        <div class="hidden-abstract">
+                            <p>Recently, ammonia has gained attention as a low-carbon or even carbon-free marine fuel, forming part of the ambitious global efforts to decarbonize maritime transportation through phased approaches set out by the International Maritime Organization (IMO). However, due to its high toxicity, large-scale adoption of ammonia requires careful management of accidental release risks, ensuring that any toxic plume is effectively contained and mitigated before reaching sensitive receptors. Since 2020, MESD has been conducting studies on ammonia bunkering and safety, including the creation and simulation of various release scenarios under tropical marine conditions. This presentation will share the key findings and insights gained from these years of research.</p>
+                        </div>
+                        <div class="hidden-bio">
+                            <p>Dr Liu Ming holds a Ph.D. in Physical Chemistry from Nankai University, China in 2002. He started his career as a postdoctoral fellow at Bar Ilan University, Israel before he relocated to Singapore, where he began a rewarding 7-year tenure at the Institute of Environmental Science and Engineering (IESE), Nanyang Technological University, focusing on environmental and clean energy research with a keen emphasis on Singapore's maritime industry needs.</p>
+                            <p>For the following 13 years, Dr Liu has built an extensive portfolio while working with Ecospec Pte Ltd, Keppel Offshore & Marine Technology Centre (KOMtech), and Maritime Energy & Sustainable Development (MESD). His expertise spans marine emission control, alternative marine fuels, and advanced safety simulations for ammonia bunkering. His work has gained recognition within the global maritime R&D community, fostering collaborations with leading industry players. Over the last three years, he has successfully managed projects exceeding S$2 million in value.</p>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="speaker-card">
+                    <img src="documents/speakers-photo/Dr. Jim Rogerson.png" alt="Photo of Dr. Jim Rogerson">
+                    <h4>Dr. Jim Rogerson</h4>
+                    <p class="affiliation">New Technologies, Siemens Energy</p>
+                    <p class="talk-title">Research partnerships for the decarbonization of gas turbines</p>
+                    <!-- HIDDEN DETAILS -->
+                    <div class="speaker-hidden-details">
+                        <div class="hidden-abstract">
+                            <p>Decarbonised gas turbines are an important lever to enable net zero greenhouse gas emissions – there is potential to achieve significant transformation via the Siemens Energy fleet of over 7000 engines located in more than 90 countries with power outputs ranging from 2 to 593 MW. Research partnerships between governments, industry, and academia provide key insights that are essential to the design of state-of-the-art gas turbines. This presentation will show highlights from R&D programmes for sustainable fuels including hydrogen, methanol, and ammonia.</p>
+                            <p>An integrated industrial power-to-H2-to-power solution has been demonstrated at full scale under the EU HYFLEXPOWER and HYCOFLEX projects, using a Siemens Energy electrolyzer for green H2 production and dry low emissions (DLE) combustion technology on the SGT-400 gas turbine. Successful engine tests with bio-methanol have also been carried out on aero-derivative (nonDLE) SGT-A20 and SGT-A35 gas turbines. Ammonia and ammonia-hydrogen blends have been studied under several research projects with academic partners, including the ongoing LCER-2 project in Singapore. Together with our partners, we are addressing the unique challenges of ammonia combustion in gas turbines, with the aim of providing sustainable power generation for regions where importing ammonia is an attractive route to decarbonization.</p>
+                        </div>
+                        <div class="hidden-bio">
+                            <p>Jim Rogerson is a Senior Combustion Specialist at Siemens Energy. He has a PhD from the University of Sydney (2006) and carried our post-doctoral research at the University of Cambridge (2006–2009) before joining industry. His current work on sustainable fuels includes numerical and experimental studies in support of engine development programmes, and collaboration with academic partners in the UK and Singapore.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="speaker-card">
+                    <img src="documents/speakers-photo/Junji Imada.png" alt="Photo of Junji Imada">
+                    <h4>Mr. Junji Imada</h4>
+                    <p class="affiliation">Global Research & Innovation Center, Mitsubishi Heavy Industries Asia Pacific</p>
+                    <p class="talk-title">Development of combustion technology for mission net zero</p>
+                    <!-- HIDDEN DETAILS -->
+                    <div class="speaker-hidden-details">
+                        <div class="hidden-abstract">
+                            <p>Mitsubishi Heavy Industries (MHI), under the theme of “MISSION NET ZERO,” has issued its 2040 Carbon Neutrality Declaration, combining the Group’s technologies and resources to promote this effort. MHI defines the energy transition as encompassing all measures aimed at decarbonizing energy systems that predominantly rely on fossil fuels. These measures are organized around three core pillars: “Decarbonizing Existing Infrastructure”, “Establishing a Hydrogen Ecosystem” and “Establishing a Carbon Dioxide Ecosystem”. Development of combustion equipment and control of combustion phenomena are important for the realization of these goals. MHI has installed many high-efficiency GTCC (Gas Turbine Combined Cycle) plants and WTE (Waste to Energy) plants in Singapore. For the development of hydrogen and ammonia gas turbine combustor and the development of the WTE related combustion technologies, the examples of “Laboratory to Commercial” are presented.</p>
+                        </div>
+                        <div class="hidden-bio">
+                            <p>Junji Imada is the General Manager at Mitsubishi Heavy Industries Asia Pacific, holding a Master's degree in Mechanical Engineering from Kyushu University. He began his career with MHI in 1998, and his key roles have included Manager of the No.1 Combustion Laboratory from 2015 to 2017, followed by Project Manager of the Waste to Energy Center from 2018 to 2024, before assuming his current position as General Manager for MHI – Asia Pacific in 2025.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="registration-section">
+            <h3>Registration is Now Open!</h3>
+            <p class="pricing-info">
+                Registration Fee: <strong>SGD 120</strong> for SSCI members and <strong>SGD 150</strong> for non-members.
+                <br>
+                Click the button below to complete your registration and payment.
+            </p>
+            <a href="https://forms.gle/mWPZLdcPvGubda9X7" target="_blank" class="single-register-button">Register Now</a>
+        </section>
+
+        <section>
+            <h3>Submission Guidelines</h3>
+            <p>Authors are invited to submit a <strong>one-paragraph abstract of no more than 300 words</strong> to the official SSCI email. In your submission email, please indicate your preference for an oral or poster presentation.</p>
+            <p class="center-text">
+                <a href="documents/SSCI_1st_annual_meeting_abstract_template.docx" target="_blank" class="button-link">Download Abstract Template (Docx)</a>
+            </p>
+
+            <ul>
+                <li><strong class="large-bold">Submission deadline: 15th November 2025</strong></li>
+                <li><strong class="large-bold">Submit to: <a href="mailto:ssci.combustion@gmail.com">ssci.combustion@gmail.com</a></strong></li>
+            </ul>
+        </section>
+
+        <br>
+        <strong>Organizers:</strong><br>
+        Prof. Siew Hwa Chan (NTU)<br>
+        Prof. Huangwei Zhang (NUS)<br>
+        Dr. Wai Lee Chan (SUTD)<br>
+        <br>
+        <strong>Secretaries:</strong><br>
+        Dr. Shangpeng Li (NUS)<br>
+        Dr. Xuren Zhu (NUS)
+
+    </main>
+
+    <footer>
+        &copy; Singapore Section of the Combustion Institute
+    </footer>
+
+    <!-- SPEAKER MODAL STRUCTURE -->
+    <div id="speakerModal" class="modal-overlay">
+        <div class="modal-content">
+            <span class="close-modal-btn">&times;</span>
+
+            <div class="modal-header">
+                <h2 id="modalName">Speaker Name</h2>
+                <p id="modalAffiliation" class="modal-affiliation">Affiliation</p>
+            </div>
+
+            <div class="modal-body">
+                <h4>Talk Title</h4>
+                <div id="modalTitle" class="modal-title-text">The Title</div>
+
+                <h4>Abstract</h4>
+                <div id="modalAbstract">
+                    <!-- Abstract text injected via JS -->
+                </div>
+
+                <h4>Biography</h4>
+                <div id="modalBio">
+                    <!-- Bio text injected via JS -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT FOR MODAL INTERACTION -->
+    <script>
+        // Get DOM elements
+        const modal = document.getElementById('speakerModal');
+        const closeBtn = document.querySelector('.close-modal-btn');
+        const cards = document.querySelectorAll('.speaker-card');
+
+        // Elements to fill inside the modal
+        const modalName = document.getElementById('modalName');
+        const modalAffiliation = document.getElementById('modalAffiliation');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalAbstract = document.getElementById('modalAbstract');
+        const modalBio = document.getElementById('modalBio');
+
+        // Add click event to each speaker card
+        cards.forEach(card => {
+            card.addEventListener('click', () => {
+                // 1. Get data from the visible card
+                const name = card.querySelector('h4').innerText;
+                const affiliation = card.querySelector('.affiliation').innerText;
+                const title = card.querySelector('.talk-title').innerText;
+
+                // 2. Get data from the hidden details div
+                const hiddenDetails = card.querySelector('.speaker-hidden-details');
+
+                // Default messages if no content is pasted yet
+                let abstractHTML = "<p>Abstract details coming soon.</p>";
+                let bioHTML = "<p>Biography details coming soon.</p>";
+
+                if (hiddenDetails) {
+                    const absDiv = hiddenDetails.querySelector('.hidden-abstract');
+                    const bioDiv = hiddenDetails.querySelector('.hidden-bio');
+                    if (absDiv) abstractHTML = absDiv.innerHTML;
+                    if (bioDiv) bioHTML = bioDiv.innerHTML;
+                }
+
+                // 3. Populate the modal
+                modalName.innerText = name;
+                modalAffiliation.innerText = affiliation;
+                modalTitle.innerText = title;
+                modalAbstract.innerHTML = abstractHTML;
+                modalBio.innerHTML = bioHTML;
+
+                // 4. Show the modal
+                modal.style.display = 'flex';
+
+                // Prevent background scrolling
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        // Close Modal Function
+        function closeModal() {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto'; // Re-enable scrolling
+        }
+
+        // Event Listeners for closing
+        closeBtn.addEventListener('click', closeModal);
+
+        // Close if user clicks outside the white box
+        window.addEventListener('click', (event) => {
+            if (event.target == modal) {
+                closeModal();
+            }
+        });
+
+        // Close on Escape key
+        document.addEventListener('keydown', (event) => {
+            if (event.key === "Escape") {
+                closeModal();
+            }
+        });
+    </script>
+
+</body>
+</html>
